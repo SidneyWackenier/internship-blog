@@ -1,5 +1,5 @@
 import { client } from '@/lib/contentful';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import RichText from '@/components/RichText';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
@@ -52,9 +52,7 @@ export default async function PostPage({
 
       <Separator className="mb-8" />
 
-      <div className="prose prose-slate max-w-none">
-        {documentToReactComponents(content as any)}
-      </div>
+      <RichText content={content as any} />
     </main>
   );
 }

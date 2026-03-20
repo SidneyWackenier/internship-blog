@@ -24,6 +24,13 @@ export function Header() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
+                <Link href="/over" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+                  About Me
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink asChild>
                 <Link href="/blog" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
                   Blog
                 </Link>

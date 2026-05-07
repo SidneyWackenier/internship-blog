@@ -5,6 +5,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Header() {
   return (
@@ -13,31 +14,34 @@ export function Header() {
         <Link href="/" className="font-semibold text-lg tracking-tight text-primary-foreground">
           Internship Journal
         </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
-                  Home
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/over" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
-                  About Me
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/blog" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
-                  Blog
-                </Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div className="flex items-center gap-1">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+                    Home
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/over" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+                    Over mij
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link href="/blog" className="px-3 py-2 text-sm text-primary-foreground hover:text-primary-foreground/80 transition-colors">
+                    Blog
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

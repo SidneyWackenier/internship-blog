@@ -21,7 +21,7 @@ export function PostCard({ post }: { post: BlogPost }) {
           </h2>
         </Link>
         <p className="text-muted-foreground text-sm">
-          {new Date(post.date).toLocaleDateString("en-US", { dateStyle: "long" })}
+          {new Date(post.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}
         </p>
       </CardHeader>
       <CardContent>
@@ -29,7 +29,7 @@ export function PostCard({ post }: { post: BlogPost }) {
       </CardContent>
       <CardFooter>
         <Button variant="link" className="p-0 h-auto" asChild>
-          <Link href={`/blog/${post.slug}`}>Read entry →</Link>
+          <Link href={`/blog/${post.slug}`}>Lees verder →</Link>
         </Button>
       </CardFooter>
     </Card>

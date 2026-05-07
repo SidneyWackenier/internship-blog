@@ -31,6 +31,22 @@ const options: Options = {
       </blockquote>
     ),
     [BLOCKS.HR]: () => <hr className="my-8 border-border" />,
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const asset = node.data.target as {
+        fields: { file: { url: string; contentType: string }; title: string };
+      };
+      const { url, contentType } = asset.fields.file;
+      if (!contentType.startsWith('image/')) return null;
+      return (
+        <div className="my-6 rounded-lg overflow-hidden">
+          <img
+            src={`https:${url}`}
+            alt={asset.fields.title ?? ''}
+            className="w-full h-auto"
+          />
+        </div>
+      );
+    },
   },
 };
 

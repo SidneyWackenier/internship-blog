@@ -1,4 +1,5 @@
 import { createClient } from 'contentful';
+import type { Document } from '@contentful/rich-text-types';
 
 export const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -11,11 +12,12 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   tags: string[];
-  content: any;
+  content: Document;
+  coverImage?: string;
 }
 
 export async function getBlogPosts(selectedTag?: string, limit?: number): Promise<BlogPost[]> {
-  const query: any = {
+  const query: Record<string, unknown> = {
     content_type: 'blogPost',
     order: ['-sys.createdAt'],
   };
@@ -30,11 +32,17 @@ export async function getBlogPosts(selectedTag?: string, limit?: number): Promis
 
   const response = await client.getEntries(query);
 
-  return response.items.map((item) => ({
-    title: item.fields.title,
-    slug: item.fields.slug,
-    date: item.fields.date,
-    excerpt: item.fields.excerpt,
-    tags: item.fields.tags,
-  })) as BlogPost[];
+  return response.items.map((item) => {
+    const img = item.fields.coverImage as
+      | { fields: { file: { url: string } } }
+      | undefined;
+    return {
+      title: item.fields.title,
+      slug: item.fields.slug,
+      date: item.fields.date,
+      excerpt: item.fields.excerpt,
+      tags: item.fields.tags,
+      coverImage: img?.fields?.file?.url ? `https:${img.fields.file.url}` : undefined,
+    };
+  }) as BlogPost[];
 }

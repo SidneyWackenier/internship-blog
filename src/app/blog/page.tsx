@@ -15,7 +15,7 @@ export default async function BlogPage({
 
   return (
     <main className="max-w-4xl mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-4">Stagejournaal</h1>
+      <h1 className="text-4xl font-bold mb-4">Blog</h1>
 
       <div className="mb-12">
         <TagFilter categories={categories} activeTag={tag} />
